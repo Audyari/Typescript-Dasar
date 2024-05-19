@@ -1,28 +1,42 @@
-Pengenalan TypeScript
+Membuat Project
 
-===========================
-https://www.typescriptlang.org/
-==============================
+======================
 
-contoh code sederhana : example.ts
+1. npm init -y
 
-// Deklarasi tipe data
-let message: string = "Halo, Dunia!";
-let age: number = 30;
-let isStudent: boolean = true;
+2. npm install --save-dev typescript
 
-// Fungsi dengan tipe data
-function greet(name: string): string {
-  return `Hai, ${name}!`;
+3. npx tsc --init
+
+4. Buat direktori baru untuk menyimpan file-file sumber TypeScript Anda, misalnya "src".
+
+5.  * Di dalam direktori src, buat file baru dengan ekstensi .ts, misalnya app.ts.
+    * Tulis kode TypeScript Anda di dalam file tersebut.
+
+6. npx tsc
+
+7. Untuk menjalankan aplikasi, gunakan perintah node src/app.js (atau nama file JavaScript yang dihasilkan).
+
+====================================
+
+package.json : type nya jangan lupa di jadiin module :
+
+{
+  "name": "typescript-dasar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
 }
 
-console.log(greet("John")); // Output: Hai, John!
 
-
-=========================================
-
-1. npm install -g typescript
-2. tsc example.ts
-3. node example.js
-
-=====================================
+====================================================
