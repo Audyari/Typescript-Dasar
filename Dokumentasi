@@ -1,0 +1,14 @@
+Pendahuluan
+
++++++++++++++++++++++++
+
+Beberapa alasan mengapa orang menggunakan TypeScript:
+
+1. Sistem Tipe Statis: TypeScript memperkenalkan sistem tipe statis, yang memungkinkan Anda untuk mendeklarasikan tipe data untuk variabel, parameter fungsi, dan nilai kembalian. Ini membantu mengidentifikasi kesalahan tipe data pada tahap pengembangan dan membuat kode lebih aman serta mudah untuk dipelihara.
+2. Fitur Modern JavaScript: TypeScript menyediakan dukungan untuk fitur terbaru JavaScript, seperti kelas, modul, dekorasi, dan lainnya. Ini memungkinkan Anda untuk menggunakan fitur-fitur ini bahkan di browser yang belum mendukungnya.
+3. Tooling yang Kuat: TypeScript memiliki editor yang terintegrasi dengan baik, seperti Visual Studio Code, yang menyediakan fitur-fitur seperti auto-complete, navigasi kode, dan refactoring yang lebih baik.
+4. Keamanan dan Pemeliharaan Kode: Sistem tipe statis TypeScript membantu Anda menemukan kesalahan pada tahap pengembangan, sehingga Anda dapat menulis kode yang lebih aman dan mudah untuk dipelihara.
+5. Interoperabilitas dengan JavaScript: Karena TypeScript adalah superset dari JavaScript, Anda dapat dengan mudah mengintegrasikan kode TypeScript dengan kode JavaScript yang ada.
+
+
+================================
