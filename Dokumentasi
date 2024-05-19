@@ -1,42 +1,60 @@
-Membuat Project
+Setup TypeScript Project
 
-======================
+==============================
 
 1. npm init -y
+2. "type": "module"
+3. npm install --save-dev jest @types/jest
+4. npm install --save-dev babel-jest @babel/preset-env
+5.  
 
-2. npm install --save-dev typescript
+package.json :
 
-3. npx tsc --init
+"scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  }
 
-4. Buat direktori baru untuk menyimpan file-file sumber TypeScript Anda, misalnya "src".
+6. 
 
-5.  * Di dalam direktori src, buat file baru dengan ekstensi .ts, misalnya app.ts.
-    * Tulis kode TypeScript Anda di dalam file tersebut.
-
-6. npx tsc
-
-7. Untuk menjalankan aplikasi, gunakan perintah node src/app.js (atau nama file JavaScript yang dihasilkan).
-
-====================================
-
-package.json : type nya jangan lupa di jadiin module :
+babel.config.json :
 
 {
-  "name": "typescript-dasar",
-  "version": "1.0.0",
-  "description": "",
-  "main": "example.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "typescript": "^5.4.5"
-  }
+  "presets": ["@babel/preset-env"]
 }
 
 
-====================================================
+7. npm install --save-dev typescript
+8. npx tsc --init
+9 
+
+tsconfig.json :
+
+ "module": "ES6",  
+
+10. npm install --save-dev @babel/preset-typescript
+
+11. babel.config.json
+
+{
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+    ]
+  }
+
+12. npm install --save-dev ts-jest
+13. npm install --save-dev @jest/globals
+14. buat direktory tests
+15. didalam nya buat file hello.tst.ts
+
+15. npx jest    
+
+
+
+
+==========================================
