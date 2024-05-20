@@ -1,44 +1,25 @@
- Say Hello Function
+Kompilasi TypeScript
 
-===========================
+======================
 
-buat file di tests / hello.test.ts :
+1. Jalankan npm list -g typescript untuk memeriksa apakah TypeScript sudah terinstal secara global.
 
-import { sayHello } from "../src/hello";
+2. masuk ke tsconfig.json
+    ubah  "outDir": "dist/"
+3. buat direktory dist
+4 ketik npx tsc
+5. maka komilasi semua nya masuk ke direktori "dist"
 
-describe("sayHello", () => {
-  test("should log a greeting", () => {
-    // Tangkap console.log
-    const consoleSpy = jest.spyOn(console, "log");
+======================
 
-    // Panggil fungsi sayHello
-    sayHello("John");
+link : https://www.typescriptlang.org/tsconfig/#include
+       https://www.typescriptlang.org/tsconfig#exclude 
 
-    // Verifikasi output
-    expect(consoleSpy).toHaveBeenCalledWith("Hello, John!");
-
-    // Restore console.log
-    consoleSpy.mockRestore();
-  });
-});
+1. "include": ["src/**/*", "tests/**/*"],
+2.   "exclude": ["tests/**/*"],
 
 
-===============================
-
-buat file di src / hello.ts :
-
-export function sayHello(name: string) {
-  console.log(`Hello, ${name}!`);
-}
+=================================
 
 
-========================
-
-jalanin nya npx jest atau npm test
-
-npx jest tests/hello.test.ts
-
-================================
-
-
-
+ 
