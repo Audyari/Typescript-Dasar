@@ -1,86 +1,8 @@
-Tipe Data Primitif
+Babel TypeScript
 
 =========================
 
-cara runing nya : npx jest ./tests/Tipe-Data-Primitif.test.ts
-
-compaile nya : npx tsc
-
-buat file Tipe-Data-Primitif.test.ts
+npx tsc --watch
 
 
-1. number: Tipe data untuk bilangan, baik integer maupun float.
-2. string: Tipe data untuk teks atau karakter.
-3.boolean: Tipe data untuk nilai logika, yaitu true atau false.
-4.null: Tipe data untuk nilai kosong yang sengaja diberikan.
-5.undefined: Tipe data untuk nilai yang belum didefinisikan.
-6.symbol: Tipe data untuk mendeklarasikan simbol yang unik dan tidak dapat diubah.
-7.bigint: Tipe data untuk bilangan bulat yang sangat besar, lebih besar dari Number.MAX_SAFE_INTEGER.
-
-=====================================
-
-contoh kode sederhana :
-
-cara runing nya : npx jest ./tests/Tipe-Data-Primitif.test.ts
-
-buat file Tipe-Data-Primitif.test.ts
-
-
-describe("Tipe Data Primitif", () => {
-  test("Menggunakan console.log():", () => {
-    function getAgeMessage(age: number): string {
-      return `Your age is: ${age}`;
-    }
-
-    let ageMessage: string = getAgeMessage(30);
-    console.log(ageMessage); // Output: Your age is: 30
-  });
-  test("Menggunakan template literal (string interpolation):", () => {
-    let age: number = 30;
-    let name: string = "John Doe";
-    let isStudent: boolean = true;
-
-    console.log(`Age: ${age}`); // Output: Age: 30
-    console.log(`Name: ${name}`); // Output: Name: John Doe
-    console.log(`Is Student: ${isStudent}`); // Output: Is Student: true
-  });
-  test("Menggunakan return dalam fungsi:", () => {
-    function getAgeMessage(age: number): string {
-      return `Your age is: ${age}`;
-    }
-
-    let ageMessage: string = getAgeMessage(30);
-    console.log(ageMessage); // Output: Your age is: 30
-  });
-
-  test("Menggunakan template literal (string interpolation):", () => {
-    // Contoh deklarasi BigInt
-    let bigNumber1 = 9007199254740991n; // Bilangan bulat yang sangat besar
-    let bigNumber2 = BigInt(9007199254740991); // Menggunakan fungsi konstruktor BigInt()
-
-    // Operasi aritmatika dengan BigInt
-    let sum = bigNumber1 + bigNumber2;
-    let difference = bigNumber1 - bigNumber2;
-    let product = bigNumber1 * bigNumber2;
-    let quotient = bigNumber1 / bigNumber2;
-    let remainder = bigNumber1 % bigNumber2;
-
-    console.log(sum); // Output: 18014398509481982n
-    console.log(difference); // Output: 0n
-    console.log(product); // Output: 81070792742378316586783361n
-    console.log(quotient); // Output: 1n
-    console.log(remainder); // Output: 0n
-
-    // Perbandingan BigInt
-    console.log(bigNumber1 > bigNumber2); // Output: true
-    console.log(bigNumber1 < bigNumber2); // Output: false
-    console.log(bigNumber1 === bigNumber2); // Output: false
-
-    // Konversi antara BigInt dan Number
-    let numberValue = Number(bigNumber1); // 9007199254740991
-    let bigIntValue = BigInt(numberValue); // 9007199254740991n
-  });
-});
-
-
-============================================================
+=====================
