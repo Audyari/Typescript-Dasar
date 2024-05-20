@@ -1,74 +1,88 @@
-Union Type
+Type Alias
 
-=====================================
+==================
+
 npx jest & npx tsc
 
-Union Type di TypeScript adalah fitur yang memungkinkan sebuah variabel atau parameter dapat memiliki lebih dari satu tipe data. 
-Ini berguna ketika Anda ingin mewakili nilai yang dapat berupa salah satu dari beberapa tipe data yang berbeda.
+Type Alias (Alias Tipe) di TypeScript adalah sebuah cara untuk mendefinisikan tipe data yang baru, berdasarkan tipe data yang sudah ada.
 
-Berikut adalah contoh penggunaan Union Type:
+============
 
-describe("Union type", () => {
-  test("contoh kode nya", () => {
-    // Deklarasi variabel dengan tipe Union
-    let value: string | number;
-    value = "hello"; // OK
-    value = 42; // OK
-    //value = true; // Error: Type 'boolean' is not assignable to type 'string | number'
+contoh code serhana : 
 
-    // Fungsi dengan parameter Union Type
-    function printValue(x: string | number) {
-      if (typeof x === "number") {
-        console.log(x.toFixed(2)); // OK
-      } else {
-        console.log(x.length); // OK
-      }
+describe("Type ALias", () => {
+  test("Menggunakan Type ALias:", () => {
+    // Mendefinisikan Type Alias untuk Koordinat
+    type Coordinate = {
+      x: number;
+      y: number;
+    };
+
+    // Fungsi untuk menghitung jarak antara dua koordinat
+    function calculateDistance(coord1: Coordinate, coord2: Coordinate): number {
+      const dx = coord1.x - coord2.x;
+      const dy = coord1.y - coord2.y;
+      return Math.sqrt(dx * dx + dy * dy);
     }
-    printValue(3.14); // OK
-    printValue("hello"); // OK
 
-    // Array dengan Union Type
-    let mixedArray: (string | number)[] = ["hello", 42, "world", 3.14];
-    // Perbaikan: Menghapus penambahan nilai boolean ke array
-    // mixedArray.push(true); // Error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'
+    // Contoh penggunaan
+    const point1: Coordinate = { x: 2, y: 3 };
+    const point2: Coordinate = { x: 5, y: 7 };
+    const distance = calculateDistance(point1, point2);
+    console.log(`Jarak antara dua titik adalah: ${distance}`);
   });
 });
 
 
-============================================
-// Array dengan Union Type
-let mixedArray: (string | number)[] = ['hello', 42, 'world', 3.14];
-mixedArray.push(true); // Error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'
 
-========================================================================
+===================================================================
+
+contoh kode sederhana type alias untuk union type : 
+
+buat 3 file 
+
+File: src/types/user.ts
+
+export type Role = 'admin' | 'editor' | 'viewer';
+
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  role: Role;
+};
+
+==========================
+
+File: src/services/user.service.ts
+
+import { User, Role } from '../types/user';
+
+export function getUsers(): User[] {
+  return [
+    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'editor' },
+    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'viewer' },
+  ];
+}
+
+export function grantAccess(user: User, role: Role): User {
+  return { ...user, role };
+}
 
 
-contoh lain tapi ditambahin expect buat unit testing nya :
+==========================
 
-describe("Union type", () => {
-  test("contoh kode nya", () => {
-    // Deklarasi variabel dengan tipe Union
-    let value: string | number = "hello"; // OK
-    value = 42; // OK
-    // value = true; // Error: Type 'boolean' is not assignable to type 'string | number'
+File: src/app.ts
 
-    // Fungsi dengan parameter Union Type
-    function printValue(x: string | number) {
-      if (typeof x === "number") {
-        console.log(x.toFixed(2)); // OK
-      } else {
-        console.log(x.length); // OK
-      }
-    }
-    printValue(3.14); // OK
-    printValue("hello"); // OK
+import { getUsers, grantAccess } from './services/user.service';
 
-    // Array dengan Union Type
-    let mixedArray: (string | number)[] = ["hello", 42, "world", 3.14];
-    expect(mixedArray).toBeInstanceOf(Array);
-    expect(mixedArray).toEqual(["hello", 42, "world", 3.14]);
-  });
-});
+const users = getUsers();
+console.log(users);
+
+const updatedUser = grantAccess(users[0], 'editor');
+console.log(updatedUser);
 
 
-==============================================================
+======================================================
+
