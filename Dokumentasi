@@ -1,51 +1,57 @@
-Optional Properties
+Enum
 
 ==================
 
 npx jest & npx tsc
 
-npx jest ./tests/Object-Type.test.ts
+npx jest ./tests/Enum.test.ts
+npx tsc ./tests/Enum.test.ts
 
-Dalam TypeScript, "Optional Properties" adalah sebuah konsep yang memungkinkan kita untuk mendefinisikan properti pada 
-sebuah objek atau interface yang tidak harus selalu ada.
+Di dalam TypeScript, enum (singkatan dari "enumeration") adalah sebuah tipe data khusus yang memungkinkan kamu untuk 
+mendefinisikan sekumpulan konstanta yang diberi nama. Ini adalah cara untuk membuat kumpulan nilai-nilai yang terkait, yang dapat 
+digunakan di seluruh kode kamu.
 
-import { Person } from '../src/Person';
-describe("Optional Propertis", () => {
-  test("Contoh sederhanay nya", () => {
-    const person1: Person = {
-      name: "John Doe",
-      age: 30,
-      email: "john.doe@example.com",
-    };
+=======================
 
-    const person2: Person = {
-      name: "Jane Smith",
-      age: 25,
-      // email tidak perlu diisi
-    };
+describe("Enum", () => {
+  test("Contoh kode sederhana", () => {
+    // Definisikan enum untuk status pekerjaan
+    enum JobStatus {
+      Unemployed,
+      Employed,
+      Freelance,
+      Retired,
+    }
 
-    console.log(person1.email); // Output: "john.doe@example.com"
-    console.log(person2.email); // Output: undefined
+    // Fungsi untuk memeriksa status pekerjaan
+    function checkJobStatus(status: JobStatus): void {
+      switch (status) {
+        case JobStatus.Unemployed:
+          console.log("Sedang mencari pekerjaan");
+          break;
+        case JobStatus.Employed:
+          console.log("Bekerja penuh waktu");
+          break;
+        case JobStatus.Freelance:
+          console.log("Bekerja secara freelance");
+          break;
+        case JobStatus.Retired:
+          console.log("Sudah pensiun");
+          break;
+        default:
+          console.log("Status pekerjaan tidak valid");
+      }
+    }
+
+    // Contoh penggunaan
+    let personStatus: JobStatus = JobStatus.Employed;
+    checkJobStatus(personStatus); // Output: Bekerja penuh waktu
+
+    personStatus = JobStatus.Freelance;
+    checkJobStatus(personStatus); // Output: Bekerja secara freelance    });
   });
 });
 
 
-============================================
-
-Person.ts
-
-export interface Person {
-  name: string;
-  age: number;
-  email?: string; // Optional property
-}
-
-=============================
-
-
-
-
-
-
-
+======================================================
 
