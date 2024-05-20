@@ -1,117 +1,33 @@
-Tipe Data Array
+Tipe Data Any
 
 =====================================
 npx jest & npx tsc
 
-1. Deklarasi Array Literal :
-let myArray: number[] = [1, 2, 3, 4, 5];
-// atau
-let myArray: Array<number> = [1, 2, 3, 4, 5];
+Tipe data any di TypeScript adalah salah satu tipe data yang paling fleksibel. Tipe data ini dapat digunakan 
+untuk mewakili semua jenis nilai, termasuk nilai primitif, objek, array, fungsi, dan lain-lain.
 
-2. Deklarasi Array Kosong :
-let myArray: string[] = [];
-// atau
-let myArray: Array<string> = [];
+npx jest ./tests/tipe-data-any.test.ts
 
-3. Deklarasi Array dengan Tipe Campuran :
-let myArray: (number | string)[] = [1, 2, 'three', 4, 'five'];
-// atau
-let myArray: Array<number | string> = [1, 2, 'three', 4, 'five'];
+====================================
 
+// Deklarasi variabel dengan tipe any
+let variable: any;
+variable = 42;       // OK
+variable = "hello";  // OK
+variable = true;     // OK
+variable = {};       // OK
+variable = [];       // OK
+variable = () => {}; // OK
 
-contoh kode nya : 
-
-// 1. Deklarasi array literal
-let numbers: number[] = [1, 2, 3, 4, 5];
-let names: string[] = ['Alice', 'Bob', 'Charlie'];
-let mixedArray: (number | string)[] = [1, 'two', 3, 'four', 5];
-
-// 2. Deklarasi array kosong
-let emptyNumbers: number[] = [];
-let emptyNames: string[] = [];
-
-// 3. Mengakses elemen array
-console.log(numbers[0]); // Output: 1
-console.log(names[1]); // Output: 'Bob'
-
-// 4. Menambahkan elemen ke array
-numbers.push(6);
-names.push('David');
-
-// 5. Menghapus elemen dari array
-let lastNumber = numbers.pop(); // lastNumber = 6
-let firstName = names.shift(); // firstName = 'Alice'
-
-// 6. Menggunakan perulangan for
-for (let i = 0; i < numbers.length; i++) {
-  console.log(numbers[i]);
+// Fungsi yang menerima parameter dengan tipe any
+function doSomething(x: any) {
+  console.log(x.message); // Tidak ada error, karena tipe any memperbolehkan segala sesuatu
+  x.doSomething(); // Tidak ada error, karena tipe any memperbolehkan segala sesuatu
 }
 
-// 7. Menggunakan perulangan for...of
-for (let num of numbers) {
-  console.log(num);
-}
+// Array dengan tipe any
+let anyArray: any[] = [1, "hello", true, {}];
+anyArray.push(42);
+anyArray.push("world");
 
-// 8. Menggunakan forEach()
-names.forEach(name => {
-  console.log(name);
-});
-
-// 9. Concatenate dua array
-let allNumbers = numbers.concat([7, 8, 9]);
-let allNames = names.concat(['Eve', 'Frank']);
-
-// 10. Menggunakan spread operator
-let allMixed = [...numbers, ...names];
-
-==========================================
-
-Baik, saya akan menjelaskan tentang tipe data array read-only di TypeScript.
-
-// Deklarasi array read-only
-let numbers: ReadonlyArray<number> = [1, 2, 3, 4, 5];
-
-// Mencoba mengubah elemen array (akan menimbulkan error)
-numbers[0] = 10; // Error: Index signature in type 'readonly number[]' only permits reading.
-numbers.push(6); // Error: Property 'push' does not exist on type 'readonly number[]'.
-
-
-=============================================
-
-Tuple di TypeScript memiliki fungsi yang sama dengan tuple di Python, yaitu untuk menyimpan kumpulan elemen dengan
-tipe data yang berbeda-beda.
-
-contoh :
-
-describe("Tipe Data Array", () => {
-  test("Menggunakan Tuple:", () => {
-    // Membuat tuple
-    let person: [string, number, string] = ["John Doe", 32, "New York"];
-    console.log(person); // Output: ['John Doe', 32, 'New York']
-
-    // Mengakses elemen tuple
-    console.log(person[0]); // Output: 'John Doe'
-    console.log(person[1]); // Output: 32
-    console.log(person[2]); // Output: 'New York'
-
-    // Tuple tidak dapat diubah
-    // person[0] = 'Jane Doe'; // Error: Cannot assign to '0' because it is a read-only property.
-
-    // Menggabungkan tuple
-    let combinedTuple: [string, number, string, string] = [
-      ...person,
-      "software engineer",
-    ];
-    console.log(combinedTuple); // Output: ['John Doe', 32, 'New York', 'software engineer']
-
-    // Menggunakan tuple dalam fungsi
-    function greetPerson([name, age, city]: [string, number, string]): void {
-      console.log(`Hello, ${name} from ${city}. You are ${age} years old.`);
-    }
-
-    greetPerson(person); // Output: Hello, John Doe from New York. You are 32 years old.
-  });
-});
-
-
-======================================
+===========================================
