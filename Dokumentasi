@@ -1,33 +1,74 @@
-Tipe Data Any
+Union Type
 
 =====================================
 npx jest & npx tsc
 
-Tipe data any di TypeScript adalah salah satu tipe data yang paling fleksibel. Tipe data ini dapat digunakan 
-untuk mewakili semua jenis nilai, termasuk nilai primitif, objek, array, fungsi, dan lain-lain.
+Union Type di TypeScript adalah fitur yang memungkinkan sebuah variabel atau parameter dapat memiliki lebih dari satu tipe data. 
+Ini berguna ketika Anda ingin mewakili nilai yang dapat berupa salah satu dari beberapa tipe data yang berbeda.
 
-npx jest ./tests/tipe-data-any.test.ts
+Berikut adalah contoh penggunaan Union Type:
 
-====================================
+describe("Union type", () => {
+  test("contoh kode nya", () => {
+    // Deklarasi variabel dengan tipe Union
+    let value: string | number;
+    value = "hello"; // OK
+    value = 42; // OK
+    //value = true; // Error: Type 'boolean' is not assignable to type 'string | number'
 
-// Deklarasi variabel dengan tipe any
-let variable: any;
-variable = 42;       // OK
-variable = "hello";  // OK
-variable = true;     // OK
-variable = {};       // OK
-variable = [];       // OK
-variable = () => {}; // OK
+    // Fungsi dengan parameter Union Type
+    function printValue(x: string | number) {
+      if (typeof x === "number") {
+        console.log(x.toFixed(2)); // OK
+      } else {
+        console.log(x.length); // OK
+      }
+    }
+    printValue(3.14); // OK
+    printValue("hello"); // OK
 
-// Fungsi yang menerima parameter dengan tipe any
-function doSomething(x: any) {
-  console.log(x.message); // Tidak ada error, karena tipe any memperbolehkan segala sesuatu
-  x.doSomething(); // Tidak ada error, karena tipe any memperbolehkan segala sesuatu
-}
+    // Array dengan Union Type
+    let mixedArray: (string | number)[] = ["hello", 42, "world", 3.14];
+    // Perbaikan: Menghapus penambahan nilai boolean ke array
+    // mixedArray.push(true); // Error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'
+  });
+});
 
-// Array dengan tipe any
-let anyArray: any[] = [1, "hello", true, {}];
-anyArray.push(42);
-anyArray.push("world");
 
-===========================================
+============================================
+// Array dengan Union Type
+let mixedArray: (string | number)[] = ['hello', 42, 'world', 3.14];
+mixedArray.push(true); // Error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'
+
+========================================================================
+
+
+contoh lain tapi ditambahin expect buat unit testing nya :
+
+describe("Union type", () => {
+  test("contoh kode nya", () => {
+    // Deklarasi variabel dengan tipe Union
+    let value: string | number = "hello"; // OK
+    value = 42; // OK
+    // value = true; // Error: Type 'boolean' is not assignable to type 'string | number'
+
+    // Fungsi dengan parameter Union Type
+    function printValue(x: string | number) {
+      if (typeof x === "number") {
+        console.log(x.toFixed(2)); // OK
+      } else {
+        console.log(x.length); // OK
+      }
+    }
+    printValue(3.14); // OK
+    printValue("hello"); // OK
+
+    // Array dengan Union Type
+    let mixedArray: (string | number)[] = ["hello", 42, "world", 3.14];
+    expect(mixedArray).toBeInstanceOf(Array);
+    expect(mixedArray).toEqual(["hello", 42, "world", 3.14]);
+  });
+});
+
+
+==============================================================
