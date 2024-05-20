@@ -1,4 +1,4 @@
-Object Type
+Optional Properties
 
 ==================
 
@@ -6,38 +6,45 @@ npx jest & npx tsc
 
 npx jest ./tests/Object-Type.test.ts
 
-Dalam pemrograman, "Object Type" mengacu pada tipe data objek, yang merupakan salah satu jenis tipe data kompleks. 
-Objek adalah kumpulan dari properti dan metode yang saling terkait, di mana properti menyimpan data, dan metode mendefinisikan 
-perilaku atau aksi yang dapat dilakukan pada objek tersebut.
+Dalam TypeScript, "Optional Properties" adalah sebuah konsep yang memungkinkan kita untuk mendefinisikan properti pada 
+sebuah objek atau interface yang tidak harus selalu ada.
 
-code seder hana nya : 
-
-describe("sayHello", () => {
-  test("should log a greeting", () => {
-    interface Person {
-      name: string;
-      age: number;
-      occupation: string;
-      email?: string; // properti opsional
-      greet(): void;
-    }
-
-    const person: Person = {
+import { Person } from '../src/Person';
+describe("Optional Propertis", () => {
+  test("Contoh sederhanay nya", () => {
+    const person1: Person = {
       name: "John Doe",
       age: 30,
-      occupation: "Software Engineer",
-      greet: function () {
-        console.log(`Hello, my name is ${this.name}.`);
-      },
+      email: "john.doe@example.com",
     };
 
-    person.email = "john.doe@example.com";
-    console.log(person.email); // Output: "john.doe@example.com"
+    const person2: Person = {
+      name: "Jane Smith",
+      age: 25,
+      // email tidak perlu diisi
+    };
+
+    console.log(person1.email); // Output: "john.doe@example.com"
+    console.log(person2.email); // Output: undefined
   });
 });
 
 
-==============================================
+============================================
+
+Person.ts
+
+export interface Person {
+  name: string;
+  age: number;
+  email?: string; // Optional property
+}
+
+=============================
+
+
+
+
 
 
 
