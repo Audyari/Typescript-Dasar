@@ -1,88 +1,44 @@
-Type Alias
+Object Type
 
 ==================
 
 npx jest & npx tsc
 
-Type Alias (Alias Tipe) di TypeScript adalah sebuah cara untuk mendefinisikan tipe data yang baru, berdasarkan tipe data yang sudah ada.
+npx jest ./tests/Object-Type.test.ts
 
-============
+Dalam pemrograman, "Object Type" mengacu pada tipe data objek, yang merupakan salah satu jenis tipe data kompleks. 
+Objek adalah kumpulan dari properti dan metode yang saling terkait, di mana properti menyimpan data, dan metode mendefinisikan 
+perilaku atau aksi yang dapat dilakukan pada objek tersebut.
 
-contoh code serhana : 
+code seder hana nya : 
 
-describe("Type ALias", () => {
-  test("Menggunakan Type ALias:", () => {
-    // Mendefinisikan Type Alias untuk Koordinat
-    type Coordinate = {
-      x: number;
-      y: number;
-    };
-
-    // Fungsi untuk menghitung jarak antara dua koordinat
-    function calculateDistance(coord1: Coordinate, coord2: Coordinate): number {
-      const dx = coord1.x - coord2.x;
-      const dy = coord1.y - coord2.y;
-      return Math.sqrt(dx * dx + dy * dy);
+describe("sayHello", () => {
+  test("should log a greeting", () => {
+    interface Person {
+      name: string;
+      age: number;
+      occupation: string;
+      email?: string; // properti opsional
+      greet(): void;
     }
 
-    // Contoh penggunaan
-    const point1: Coordinate = { x: 2, y: 3 };
-    const point2: Coordinate = { x: 5, y: 7 };
-    const distance = calculateDistance(point1, point2);
-    console.log(`Jarak antara dua titik adalah: ${distance}`);
+    const person: Person = {
+      name: "John Doe",
+      age: 30,
+      occupation: "Software Engineer",
+      greet: function () {
+        console.log(`Hello, my name is ${this.name}.`);
+      },
+    };
+
+    person.email = "john.doe@example.com";
+    console.log(person.email); // Output: "john.doe@example.com"
   });
 });
 
 
-
-===================================================================
-
-contoh kode sederhana type alias untuk union type : 
-
-buat 3 file 
-
-File: src/types/user.ts
-
-export type Role = 'admin' | 'editor' | 'viewer';
-
-export type User = {
-  id: number;
-  name: string;
-  email: string;
-  role: Role;
-};
-
-==========================
-
-File: src/services/user.service.ts
-
-import { User, Role } from '../types/user';
-
-export function getUsers(): User[] {
-  return [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'editor' },
-    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'viewer' },
-  ];
-}
-
-export function grantAccess(user: User, role: Role): User {
-  return { ...user, role };
-}
+==============================================
 
 
-==========================
 
-File: src/app.ts
-
-import { getUsers, grantAccess } from './services/user.service';
-
-const users = getUsers();
-console.log(users);
-
-const updatedUser = grantAccess(users[0], 'editor');
-console.log(updatedUser);
-
-
-======================================================
 
