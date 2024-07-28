@@ -1,57 +1,9 @@
-Enum
 
-==================
+1. https://docs.google.com/presentation/d/1r1UK4sSyAkH2h0EIym3PXOtJN9YsuV8clWaTJw_Ns4E/edit#slide=id.g2297985e8a8_0_301
 
-npx jest & npx tsc
+2. https://github.com/ProgrammerZamanNow/belajar-typescript-dasar
 
-npx jest ./tests/Enum.test.ts
-npx tsc ./tests/Enum.test.ts
+3. npm install --save-dev jest @types/jest
 
-Di dalam TypeScript, enum (singkatan dari "enumeration") adalah sebuah tipe data khusus yang memungkinkan kamu untuk 
-mendefinisikan sekumpulan konstanta yang diberi nama. Ini adalah cara untuk membuat kumpulan nilai-nilai yang terkait, yang dapat 
-digunakan di seluruh kode kamu.
-
-=======================
-
-describe("Enum", () => {
-  test("Contoh kode sederhana", () => {
-    // Definisikan enum untuk status pekerjaan
-    enum JobStatus {
-      Unemployed,
-      Employed,
-      Freelance,
-      Retired,
-    }
-
-    // Fungsi untuk memeriksa status pekerjaan
-    function checkJobStatus(status: JobStatus): void {
-      switch (status) {
-        case JobStatus.Unemployed:
-          console.log("Sedang mencari pekerjaan");
-          break;
-        case JobStatus.Employed:
-          console.log("Bekerja penuh waktu");
-          break;
-        case JobStatus.Freelance:
-          console.log("Bekerja secara freelance");
-          break;
-        case JobStatus.Retired:
-          console.log("Sudah pensiun");
-          break;
-        default:
-          console.log("Status pekerjaan tidak valid");
-      }
-    }
-
-    // Contoh penggunaan
-    let personStatus: JobStatus = JobStatus.Employed;
-    checkJobStatus(personStatus); // Output: Bekerja penuh waktu
-
-    personStatus = JobStatus.Freelance;
-    checkJobStatus(personStatus); // Output: Bekerja secara freelance    });
-  });
-});
-
-
-======================================================
-
+4. npm install --save-dev babel-jest @babel/preset-env
+ 
