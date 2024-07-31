@@ -11,5 +11,6 @@ describe("Object", () => {
 
     expect(dictionary["name"]).toBe("Audyari Wiyono");
     expect(dictionary["address"]).toBe("Jl. Raya Ciledug");
+    
   });
 });
