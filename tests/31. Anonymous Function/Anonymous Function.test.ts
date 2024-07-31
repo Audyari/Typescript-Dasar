@@ -8,9 +8,10 @@ describe('Anonymous Function', () => {
         }
 
 
-        expect(sayHello('Audyari Wiyono', name => name.toUpperCase())).toBe('Hello, AUDYARI WIYONO!');
-        console.info(sayHello('Audyari Wiyono', name => name.toUpperCase()));
+        expect(sayHello('Audyari Wiyono', function(name) { return name.toUpperCase();})).toBe('Hello, AUDYARI WIYONO!');
         
+        console.info(sayHello('Audyari Wiyono', name => name.toUpperCase()));
+
 
     }); 
 
